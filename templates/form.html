@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Work Survey Form</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent double scrollbars */
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            max-height: 100%; /* Ensures it fits within the screen */
+            overflow-y: auto; /* Enables vertical scrolling if needed */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Scrollbar customization */
+        .form-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .form-container::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 15px;
+            }
+            button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Remote Work Survey</h1>
+        <form action="/prediction" method="POST">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="18" max="100" required>
+            </div>
+
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <input type="radio" id="male" name="gender" value="Male" required>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="Female" required>
+                    <label for="female">Female</label>
+                    <input type="radio" id="Prefer not to say" name="gender" value="Other">
+                    <label for="Prefer not to say">Prefer not to say</label>
+                    <input type="radio" id="Non-binary" name="gender" value="Other">
+                    <label for="Non-binary">Non-binary</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Job_Role">Job_Role:</label>
+                <select id="Job_Role" name="Job_Role" required>
+                    <option value="Project Manager">Project Manager</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Designer">Designer</option>
+                    <option value="HR">HR</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="industry">Industry:</label>
+                <select id="industry" name="industry" required>
+                    <option value="Finance">Finance</option>
+                    <option value="IT">IT</option>
+                    <option value="Healthcare">Healthcare</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Education">Education</option>
+                    <option value="Manufacturing">Manufacturing</option>
+                    <option value="Consulting">Consulting</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Years of Experience:</label>
+                <input type="number" id="experience" name="experience" required>
+            </div>
+
+            <div class="form-group">
+                <label for="work_location">Work Location:</label>
+                <select id="work_location" name="work_location" required>
+                    <option value="Remote">Remote</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Onsite">Onsite</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hours_worked">Hours Worked Per Week:</label>
+                <input type="number" id="hours_worked" name="hours_worked" required>
+            </div>
+
+            <div class="form-group">
+                <label for="virtual_meetings">Virtual Meetings Per Week:</label>
+                <input type="number" id="virtual_meetings" name="virtual_meetings" required>
+            </div>
+
+            <div class="form-group">
+                <label for="work_life_balance">Work-Life Balance Rating (1-5):</label>
+                <input type="number" id="work_life_balance" name="work_life_balance" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="stress_level">Stress Level:</label>
+                <select id="stress_level" name="stress_level" required>
+                    <option value="">Select Stress Level</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="mental_health_condition">Mental Health Condition:</label>
+                <select id="mental_health_condition" name="mental_health_condition" required>
+                    <option value="Depression">Depression</option>
+                    <option value="Burnout">Burnout</option>
+                    <option value="Anxiety">Anxiety</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="access_resources">Access to Mental Health Resources:</label>
+                <select id="access_resources" name="access_resources" required>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Productivity_Change">Productivity Change:</label>
+                <select id="Productivity_Change" name="Productivity_Change" required>
+                    <option value="Decrease">Decrease</option>
+                    <option value="No Change">No Change</option>
+                    <option value="Increase">Increase</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="isolation_rating">Social Isolation Rating (1-5):</label>
+                <input type="number" id="isolation_rating" name="isolation_rating" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company_support">Company Support for Remote Work (1-5):</label>
+                <input type="number" id="company_support" name="company_support" min="1" max="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="physical_activity">Physical Activity Level:</label>
+                <select id="physical_activity" name="physical_activity" required>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Daily">Daily</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Sleep_Quality">Sleep Quality:</label>
+                <select id="Sleep_Quality" name="Sleep_Quality" required>
+                    <option value="Good">Good</option>
+                    <option value="Poor">Poor</option>
+                    <option value="Average">Average</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <select id="region" name="region" required>
+                    <option value="Oceania">Oceania</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Asia">Asia</option>
+                    <option value="South America">South America</option>
+                    <option value="North America">North America</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+        <h1>{res}</h1>
+    </div>
+</body>
+</html>
